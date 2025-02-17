@@ -1,0 +1,52 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/script.js" defer></script>
+</head>
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<body>
+    <div class="row">
+        <div class="col-12">
+            <form method="POST">
+                {% csrf_token %}
+                <label>DSA</label>
+                <input type="text" name="dsa" class="form-control"><br>
+
+                <label>Linear</label>
+                <input type="text" name="linear" class="form-control"><br>
+
+                <label>CS</label>
+                <input type="text" name="cs" class="form-control"><br>
+
+                <label>PakStudy</label>
+                <input type="text" name="pakstudy" class="form-control"><br>
+
+                <label>SRE</label>
+                <input type="text" name="sre" class="form-control"><br>
+
+                <label>Arabic</label>
+                <input type="text" name="arabic" class="form-control"><br>
+
+                <button type="submit">Marksheet</button>
+
+                <label>Total Marks</label>
+                <input type="text" value="{{ Obtained_Marks }}" class="form-control"><br>
+
+                <label>Percentage</label>
+                <input type="text" value="{{ Percentage }}" class="form-control"><br>
+
+                <label>Grade</label>
+                <input type="text" value="{{ Grade }}" class="form-control"><br>
+
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

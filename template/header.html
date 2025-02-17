@@ -1,0 +1,16 @@
+{% load static %}
+<header>
+    <h1>Welcome to Our Restaurant</h1>
+    <nav>
+      
+        <ul>
+            <!-- Current path: {{request.path}} -->
+            <li class="{% if request.path == '/home/' %} active {% endif %}"><a href="{% url 'home' %}">Home</a></li>
+            <li class="{% if request.path == '/menu/' %} active {% endif %}"><a href="{% url 'menu'%}">Menu</a></li>
+            <li class="{% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
+            
+            {% url 'contact' as url %}
+            <li class="{% if request.path == url %} active {% endif %}"><a href="{{url}}">Contact</a></li>
+        </ul>
+    </nav>
+</header>

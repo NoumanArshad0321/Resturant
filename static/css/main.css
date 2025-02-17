@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background:blue;
+    color: white;
+    padding: 15px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.menu-item {
+    margin: 20px;
+}
+
+.menu-item img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+header .active a{
+    background-color:red;
+   
+}
+.form{
+    content: center;
+}

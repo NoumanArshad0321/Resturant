@@ -1,16 +1,36 @@
 {% load static %}
-<header>
-    <h1>Welcome to Our Restaurant</h1>
-    <nav>
-      
-        <ul>
-            <!-- Current path: {{request.path}} -->
-            <li class="{% if request.path == '/home/' %} active {% endif %}"><a href="{% url 'home' %}">Home</a></li>
-            <li class="{% if request.path == '/menu/' %} active {% endif %}"><a href="{% url 'menu'%}">Menu</a></li>
-            <li class="{% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
-            
-            {% url 'contact' as url %}
-            <li class="{% if request.path == url %} active {% endif %}"><a href="{{url}}">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant - Home</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'home' %}">Restaurant</a>
+            </div>
+            <ul class="nav-links">
+                    <!-- Current path: {{request.path}} -->
+                    <li class="{% if request.path == '/home/' %} active {% endif %}"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="{% if request.path == '/menu/' %} active {% endif %}"><a href="{% url 'menu'%}">Menu</a></li>
+                    <li class="{% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
+                    {% url 'contact' as url %}
+                    <li class="{% if request.path == url %} active {% endif %}"><a href="{{url}}">Contact</a></li>
+            </ul>
+             
+            <div class="hamburger">&#9776;</div>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

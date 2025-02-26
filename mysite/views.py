@@ -1,21 +1,11 @@
 from django.http  import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,redirect
 from mysite.form import Userform
+from service.models import Service
 def homepage(request):
-
+     ServiceData=Service.objects.all()
      data={
-
-         'title':"Page Title",
-
-      'content':"Welcome to the homepage.",
-
-      'course': ['python','django','html'],
-
-      'students':[{'name':'Raj','age':25},
-
-      {'name':'rahul','age':26}],
-
-      'numbers':[1,2,3,4,5,6,7,8,9,10],
+       'ServiceData':ServiceData,
 
   }
      return render(request,"index.html",data)

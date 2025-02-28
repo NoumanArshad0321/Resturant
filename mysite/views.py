@@ -2,11 +2,13 @@ from django.http  import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,redirect
 from mysite.form import Userform
 from service.models import Service
+from news.models import News
 def homepage(request):
      ServiceData=Service.objects.all()
+     NewsData=News.objects.all()
      data={
        'ServiceData':ServiceData,
-
+        'NewsData':NewsData,
   }
      return render(request,"index.html",data)
 def About(request):
@@ -139,9 +141,16 @@ def marksheet(request):
                 'Percentage': round(Percentage, 2),
                 'Grade':Grade
             }
+            # this is use to handle the Exception
     except Exception as e:
         pass
 
     return  render( request,"marksheet.html",data)
-
+def newsDetails(request,newsid):
+   newsDetail=News.objects.get(id=newsid)
+#    print(newsid)
+   data={
+       'newsDetail':newsDetail
+   }
+   return render(request,"newsdetail.html",data)
 

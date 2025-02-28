@@ -2,8 +2,15 @@
 
 
 
+
 <body>
     {% block content %}
+    <marquee onmouseover="stop()" onmouseout="start()"> Welcome to our Resturant. Here you can enjoy Delicious food 24/7 &nbsp;
+        {% for n in NewsData %}
+          <a href="/newsdetail/{{n.id}}"> {{n.news_title}}</a>
+        {% endfor %}
+    </marquee>
+    
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
@@ -37,10 +44,19 @@
                 <h4>{{ n.service_title }}</h4>
                 <p>{{ n.service_des }}</p>
             </div>
-            {% endfor %}
-        </div>
-    </section>
-    {% endblock %}
+            {% endfor %}           
+             <section id="services" class="services">
+                <h2 class="section-title">Our Faculty</h2>
+                <div class="services-container">
+                    {% for n in NewsData %}
+                    <div class="service-card">
+                        <h4>{{ n.news_title}}</h4>
+                        <p>{{ n.news_describe | safe}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+             </section>
+{% endblock %}
 </body>
 
 

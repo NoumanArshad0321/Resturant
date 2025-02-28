@@ -20,4 +20,5 @@ urlpatterns = [
     path('calculator/',views.calculator,name='calculator'),
     path('evenodd/',views.evenodd,name='evenodd'),
     path('marksheet/',views.marksheet,name='marksheet'),
+    path('newsdetail/<newsid>', views.newsDetails)
     ]

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="services" class="services">
+    <h2 class="section-title">Our Services</h2>
+    <form  method="get">
+        <input type="text" name="servicename" value=""/>
+        <input type="submit" value="search"/>
+    </form>
+    <div class="services-container">
+        {% for n in ServiceData %}
+        <div class="service-card">
+            <h3>{{ n.service_name }}</h3>
+            <h4>{{ n.service_title }}</h4>
+            <p>{{ n.service_des }}</p>
+        </div>
+        {% empty %}
+        No record Found.
+        {% endfor %}
+       
+</section>        
+{% endblock %}

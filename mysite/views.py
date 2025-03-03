@@ -4,13 +4,24 @@ from mysite.form import Userform
 from service.models import Service
 from news.models import News
 def homepage(request):
-     ServiceData=Service.objects.all()
+ 
      NewsData=News.objects.all()
+    #
      data={
-       'ServiceData':ServiceData,
         'NewsData':NewsData,
   }
      return render(request,"index.html",data)
+def service(request):
+     ServiceData=Service.objects.all()
+     print('runing')
+     if request.method=="GET":
+        st=request.GET.get('servicename')
+        if st!=None:
+            ServiceData = Service.objects.filter(service_title__icontains=st)
+        data={
+            'ServiceData':ServiceData,
+        }
+        return render(request,"service.html",data)
 def About(request):
     if request.method=='GET':
         output=request.GET.get('output')
@@ -146,9 +157,8 @@ def marksheet(request):
         pass
 
     return  render( request,"marksheet.html",data)
-def newsDetails(request,newsid):
-   newsDetail=News.objects.get(id=newsid)
-#    print(newsid)
+def newsDetails(request,slug):
+   newsDetail=News.objects.get(news_slug=slug)
    data={
        'newsDetail':newsDetail
    }

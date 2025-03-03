@@ -193,7 +193,7 @@ header nav a:hover {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-footer {
+/* footer {
     background: var(--gradient);
     text-align: center;
     padding: 30px;
@@ -201,7 +201,7 @@ footer {
     font-size: 1.1rem;
     letter-spacing: 1px;
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
-}
+} */
 
 @keyframes slideIn {
     from {

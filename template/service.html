@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 {% block content %}
 <section id="services" class="services">
     <h2 class="section-title">Our Services</h2>
@@ -16,6 +17,25 @@
         {% empty %}
         No record Found.
         {% endfor %}
+        <nav aria-label="...">
+            <ul class="pagination">
+                {% if ServiceData.has_previous %}
+              <li class="page-item ">
+                <a class="page-link" href="/service/?page=1" tabindex="-1">First</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="/service/?page={{ServiceData.previous_page_number}}">previous</a></li>
+              {% endif %}
+              <li class="page-item " aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              {% if ServiceData.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="/service/?page={{ServiceData.next_page_number}}"> Next</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
        
 </section>        
 {% endblock %}

@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from mysite.form import Userform
 from service.models import Service
 from news.models import News
+from django.core.paginator import Paginator
 def homepage(request):
  
      NewsData=News.objects.all()
@@ -12,16 +13,22 @@ def homepage(request):
   }
      return render(request,"index.html",data)
 def service(request):
-     ServiceData=Service.objects.all()
-     print('runing')
-     if request.method=="GET":
-        st=request.GET.get('servicename')
-        if st!=None:
-            ServiceData = Service.objects.filter(service_title__icontains=st)
-        data={
-            'ServiceData':ServiceData,
+    data={}
+    ServiceData=Service.objects.all()
+    paginator=Paginator(ServiceData,2)
+    page_number=request.GET.get('page')
+    ServiceDataFinal=paginator.get_page(page_number)
+        #  print('runing')
+    #  if request.method=="GET":
+    #     st=request.GET.get('servicename')
+    #     if st!=None:
+    #         ServiceData = Service.objects.filter(service_title__icontains=st)
+    data={
+            'ServiceData':ServiceDataFinal,
         }
-        return render(request,"service.html",data)
+
+    return render(request,"service.html",data)
+
 def About(request):
     if request.method=='GET':
         output=request.GET.get('output')

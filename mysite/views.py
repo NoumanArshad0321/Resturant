@@ -18,6 +18,7 @@ def service(request):
     paginator=Paginator(ServiceData,2)
     page_number=request.GET.get('page')
     ServiceDataFinal=paginator.get_page(page_number)
+    total=ServiceDataFinal.paginator.num_pages
         #  print('runing')
     #  if request.method=="GET":
     #     st=request.GET.get('servicename')
@@ -25,6 +26,8 @@ def service(request):
     #         ServiceData = Service.objects.filter(service_title__icontains=st)
     data={
             'ServiceData':ServiceDataFinal,
+            'lastpage':total,
+            'totalpagelist':[n+1 for n in range(total)]
         }
 
     return render(request,"service.html",data)

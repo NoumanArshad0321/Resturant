@@ -2,6 +2,7 @@ from django.http  import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,redirect
 from mysite.form import Userform
 from service.models import Service
+from contactenquiry.models import contactEnquiry
 from news.models import News
 from django.core.paginator import Paginator
 def homepage(request):
@@ -55,6 +56,18 @@ def submitform (request):
     return HttpResponse(finalans)
 def contact(request):
     return render(request,"contact.html")
+def saveEnquiry(request):
+    n=''
+    if request.method=='POST':
+     name= request.POST.get('name')
+     email= request.POST.get('email')
+     phone= request.POST.get('phone')
+     website= request.POST.get('website')
+     message= request.POST.get('message')
+     en=contactEnquiry(name=name,email=email,phone=phone,websiteLink=website,message=message)
+     en.save()
+     n='Data inserted'
+    return render(request ,"contact.html",{'n':n} )
 def menu(request):
     return render(request,"menu.html")
 def home(request):

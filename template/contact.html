@@ -15,5 +15,33 @@
         <p>123 Food Street, City, Country</p>
         <p>Phone: +123 456 7890</p>
     </section>
+    {{n}}
+    <form method="post" action="{% url 'saveenquiry' %}" role="form" id="contact" novalidate="novalidate" class="bv-form">
+        {% csrf_token %}
+        
+        <div class="form-group first-form bottom-space">
+            <input class="form-control" type="text" name="name" required placeholder="Name">
+        </div>
+        
+        <div class="form-group bottom-space">
+            <input class="form-control" type="email" name="email" required placeholder="Email">
+        </div>
+        
+        <div class="form-group bottom-space">
+            <input class="form-control" type="tel" name="phone" required placeholder="Phone Number">
+        </div>
+        
+        <div class="form-group bottom-space">
+            <input class="form-control" type="url" name="website" required placeholder="Website Name">
+        </div>
+        
+        <div class="form-group bottom-space">
+            <textarea class="form-control" name="message" required placeholder="Message"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
 </body>
+
 {% endblock %}

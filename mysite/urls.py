@@ -22,4 +22,5 @@ urlpatterns = [
     path('marksheet/',views.marksheet,name='marksheet'),
     path('newsdetail/<slug>', views.newsDetails),
     path('service/',views.service,name='service'),
+    path('saveenquiry/' , views.saveEnquiry ,name='saveenquiry')
     ]

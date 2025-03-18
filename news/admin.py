@@ -7,6 +7,7 @@ class AdminNews(admin.ModelAdmin):
         'news_title',
         'news_describe',
         'id',
+        'news_image',
     ]
     search_fields=['id','news_title']
     ordering=['id']

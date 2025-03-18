@@ -8,8 +8,8 @@ from django.core.paginator import Paginator
 def homepage(request):
  
      NewsData=News.objects.all()
-    #
      data={
+        
         'NewsData':NewsData,
   }
      return render(request,"index.html",data)
@@ -30,7 +30,6 @@ def service(request):
             'lastpage':total,
             'totalpagelist':[n+1 for n in range(total)]
         }
-
     return render(request,"service.html",data)
 
 def About(request):
@@ -175,7 +174,6 @@ def marksheet(request):
                 'Percentage': round(Percentage, 2),
                 'Grade':Grade
             }
-            # this is use to handle the Exception
     except Exception as e:
         pass
 
